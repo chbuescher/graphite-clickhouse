@@ -160,7 +160,7 @@ func (idx *IndexFinder) Execute(ctx context.Context, query string, from int64, u
 		scope.WithTable(ctx, idx.table),
 		idx.url,
 		// TODO: consider consistent query generator
-		fmt.Sprintf("SELECT Path FROM %s WHERE %s GROUP BY Path FORMAT TabSeparatedRaw", idx.table, w),
+		fmt.Sprintf("SELECT Path FROM %s WHERE %s GROUP BY Path ORDER BY Path FORMAT TabSeparatedRaw", idx.table, w),
 		idx.opts,
 		nil,
 	)
